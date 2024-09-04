@@ -36,7 +36,6 @@ extend-exclude = '''
   | \.mypy_cache
   | \.tox
   | \.venv
-  | venv-win
   | build
   | dist
 )/

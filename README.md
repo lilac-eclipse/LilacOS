@@ -25,7 +25,7 @@ This package contains various tools and demos related to OS operations in Python
 
 To export the project to clipboard for use with AI, run:
 ```
-python3 tools/export_project_to_clip.py
+python tools/export_project_to_clip.py
 ```
 
 
