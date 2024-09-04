@@ -2,7 +2,7 @@ import os
 import pyperclip
 
 # Directories to exclude
-EXCLUDE_DIRS = {"venv", ".git", "tools", ".pytest_cache"}
+EXCLUDE_DIRS = {"venv", ".git", "tools", ".pytest_cache", "python_os.egg-info", "__pycache__"}
 
 
 def get_directory_structure(startpath):
