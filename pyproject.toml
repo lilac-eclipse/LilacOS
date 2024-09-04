@@ -9,7 +9,6 @@ description = "A simple Python OS project"
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
-
 dependencies = [
     "pyperclip==1.8.2",
     "PyQt5==5.15.11",
@@ -18,12 +17,14 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "black==24.8.0",
-    "build==1.2.1",
-    "hatch==1.12.0",
     "mypy==1.4.1",
-    "pip-tools==7.1.0",
     "pylint==3.2.7",
     "pytest==8.3.2",
+]
+
+[tool.hatch.envs.default]
+features = [
+  "dev",
 ]
 
 [tool.hatch.version]
@@ -36,9 +37,14 @@ packages = ["src/python_os"]
 python_version = "3.8"
 warn_return_any = true
 warn_unused_configs = true
+disallow_untyped_defs = false
+check_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
 
 [tool.black]
-line-length = 88
 target-version = ['py38']
 
 [tool.pylint.messages_control]
@@ -52,15 +58,22 @@ testpaths = ["tests"]
 
 
 [tool.hatch.envs.default.scripts]
+
+# Application commands
 app = "python -m python_os.main"
 export = "python tools/export_project_to_clip.py"
 
-lint = [
-    "black .",
-    "pylint src tests",
-]
-test = "pytest"
-check = [
-    "lint",
-    "test",
-]
+# Individual task commands
+format = "black ."
+type_check = "mypy src tests"
+lint = "pylint src tests"
+unit_test = "pytest"
+
+# Main workflow commands
+dev = ["format", "app"]
+dev_strict = ["format", "type_check", "app"]
+test = ["format", "unit_test"]
+test_strict = ["format", "type_check", "unit_test"]
+
+# Pre-commit workflows
+precommit = ["format", "type_check", "lint", "unit_test"]

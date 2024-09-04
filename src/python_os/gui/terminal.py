@@ -1,13 +1,15 @@
-# pylint: disable=no-name-in-module, import-error
+# pylint: disable=no-name-in-module
+from typing import Any
+
 from PyQt5.QtWidgets import QMainWindow, QTextEdit, QVBoxLayout, QWidget
-from PyQt5.QtGui import QFont, QTextCursor, QColor, QPalette, QFontMetrics
+from PyQt5.QtGui import QFont, QTextCursor, QColor, QPalette, QFontMetrics, QKeyEvent
 from PyQt5.QtCore import Qt, pyqtSignal
 
 
 class TerminalGUI(QMainWindow):
     closed = pyqtSignal(str)
 
-    def __init__(self, os_core, window_id):
+    def __init__(self, os_core: Any, window_id: str) -> None:
         super().__init__()
         self.os_core = os_core
         self.window_id = window_id
@@ -17,7 +19,7 @@ class TerminalGUI(QMainWindow):
         self.setup_ui()
         self.apply_dark_theme()
 
-    def setup_ui(self):
+    def setup_ui(self) -> None:
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
         layout = QVBoxLayout(self.central_widget)
@@ -30,7 +32,8 @@ class TerminalGUI(QMainWindow):
 
         layout.addWidget(self.terminal)
 
-        self.terminal.keyPressEvent = self.handle_key_press
+        # Instead of reassigning keyPressEvent, we'll connect it to our custom method
+        self.terminal.keyPressEvent = self.handle_key_press  # type: ignore
 
         # Set a more appropriate size based on character width
         font_metrics = QFontMetrics(font)
@@ -39,13 +42,13 @@ class TerminalGUI(QMainWindow):
 
         self.display_prompt()
 
-    def apply_dark_theme(self):
+    def apply_dark_theme(self) -> None:
         # Dark theme for the terminal
         palette = QPalette()
         background_color = QColor(30, 30, 30)
         text_color = QColor(220, 220, 220)
-        palette.setColor(QPalette.Base, background_color)
-        palette.setColor(QPalette.Text, text_color)
+        palette.setColor(QPalette.ColorRole.Base, background_color)
+        palette.setColor(QPalette.ColorRole.Text, text_color)
         self.terminal.setPalette(palette)
 
         # Dark theme for the window and title bar
@@ -68,25 +71,27 @@ class TerminalGUI(QMainWindow):
         """
         )
 
-    def display_prompt(self):
-        self.terminal.moveCursor(QTextCursor.End)
+    def display_prompt(self) -> None:
+        self.terminal.moveCursor(QTextCursor.MoveOperation.End)
         self.terminal.insertPlainText(self.prompt)
 
-    def handle_key_press(self, event):
+    def handle_key_press(self, event: QKeyEvent) -> None:
         cursor = self.terminal.textCursor()
 
-        if event.key() == Qt.Key_Return:
+        if event.key() == Qt.Key.Key_Return:
             self.process_command()
-        elif event.key() == Qt.Key_Backspace:
+        elif event.key() == Qt.Key.Key_Backspace:
             if cursor.positionInBlock() > len(self.prompt):
                 QTextEdit.keyPressEvent(self.terminal, event)
         elif cursor.positionInBlock() >= len(self.prompt):
             QTextEdit.keyPressEvent(self.terminal, event)
 
-    def process_command(self):
+    def process_command(self) -> None:
         cursor = self.terminal.textCursor()
-        cursor.movePosition(QTextCursor.End)
-        cursor.movePosition(QTextCursor.StartOfLine, QTextCursor.KeepAnchor)
+        cursor.movePosition(QTextCursor.MoveOperation.End)
+        cursor.movePosition(
+            QTextCursor.MoveOperation.StartOfLine, QTextCursor.MoveMode.KeepAnchor
+        )
         full_line = cursor.selectedText()
         command = full_line[len(self.prompt) :].strip()
 
@@ -99,7 +104,6 @@ class TerminalGUI(QMainWindow):
 
         self.display_prompt()
 
-    # pylint: disable=invalid-name
-    def closeEvent(self, event):
+    def close_event(self, event: Any) -> None:
         self.closed.emit(self.window_id)
         super().closeEvent(event)

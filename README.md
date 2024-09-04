@@ -34,28 +34,34 @@ Once in the Hatch shell:
   hatch run app
   ```
 
-- To export the project to clipboard:
-   ```
-   hatch run export
-   ```
-
 ## Development
 
 Hatch provides several commands for development tasks:
 
-- Run tests: 
+- Quick development (format and run):
+  ```
+  hatch run dev
+  ```
+- Strict development (format, type check, and run):
+  ```
+  hatch run dev_strict
+  ```
+- Run tests (format and unit test):
   ```
   hatch run test
   ```
+- Run strict tests (format, type check, and unit test):
+  ```
+  hatch run test_strict
+  ```
+- Pre-commit checks (format, type check, lint, and unit test):
+  ```
+  hatch run precommit
+  ```
 
-- Format code and run linter: 
+- To export the project to clipboard:
   ```
-  hatch run lint
-  ```
-
-- Run all checks (linting and tests):
-  ```
-  hatch run check
+  hatch run export
   ```
 
 ## Additional Notes
