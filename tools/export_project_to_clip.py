@@ -2,7 +2,15 @@ import os
 import pyperclip
 
 # Directories to exclude
-EXCLUDE_DIRS = {"venv", ".git", "tools", ".pytest_cache", "python_os.egg-info", "__pycache__"}
+EXCLUDE_DIRS = {
+    "venv",
+    "venv-win",
+    ".git",
+    "tools",
+    ".pytest_cache",
+    "python_os.egg-info",
+    "__pycache__",
+}
 
 
 def get_directory_structure(startpath):
@@ -24,7 +32,7 @@ def get_file_contents(startpath):
         dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS]
         for file in files:
             if file.endswith(
-                (".py", ".txt", ".md", ".json", ".yaml", ".yml")
+                (".py", ".txt", ".md", ".json", ".yaml", ".yml", ".toml")
             ):  # Add or remove extensions as needed
                 file_path = os.path.join(root, file)
                 output.append(f"\n\n--- Contents of {file_path} ---\n")

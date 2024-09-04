@@ -23,6 +23,11 @@ This package contains various tools and demos related to OS operations in Python
 
 ## Usage
 
+To export the project to clipboard for use with AI, run:
+```
+python3 tools/export_project_to_clip.py
+```
+
 
 To run the "Hello World" demo:
 
@@ -38,6 +43,3 @@ This should print "Hello, World!" to the console.
 - Format code: `black .`
 - Run linter: `pylint python_os tests`
 
-## Project Structure
-
-[Brief overview of your project structure]
