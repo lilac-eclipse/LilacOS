@@ -10,7 +10,7 @@ EXCLUDE_DIRS = {
     ".pytest_cache",
     "python_os.egg-info",
     "__pycache__",
-    ".mypy_cache"
+    ".mypy_cache",
 }
 
 

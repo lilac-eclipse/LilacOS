@@ -6,5 +6,35 @@
         "**/*.pyc": true,
         "**/python_os.egg-info": true,
         "**/.mypy_cache": true,
-    }
+    },
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "editor.rulers": [
+        88
+    ],
+    "python.analysis.autoImportCompletions": true,
+    "python.terminal.activateEnvironment": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.typeCheckingMode": "basic",
+    "pylint.importStrategy": "fromEnvironment",
+    "editor.suggestSelection": "first",
+    "editor.snippetSuggestions": "top",
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.indexing": true,
+    "python.analysis.extraPaths": [
+        "./src"
+    ],
+    "python.languageServer": "Pylance",
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.tabCompletion": "on",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
 }
