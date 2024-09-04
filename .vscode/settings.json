@@ -4,6 +4,7 @@
         "**/.pytest_cache": true,
         "**/__pycache__": true,
         "**/*.pyc": true,
-        "**/python_os.egg-info": true
+        "**/python_os.egg-info": true,
+        "**/.mypy_cache": true,
     }
 }
