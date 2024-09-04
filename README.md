@@ -10,36 +10,56 @@ This package contains various tools and demos related to OS operations in Python
    cd [your-repo-name]
    ```
 
-2. Set up a virtual environment (optional but recommended):
+2. Install Hatch (if not already installed):
    ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   pip install hatch
    ```
 
-3. Install the package and development dependencies:
+3. Set up the development environment:
    ```
-   pip install -e ".[dev]"
+   hatch env create
    ```
 
 ## Usage
 
-To export the project to clipboard for use with AI, run:
+To enter the development environment:
 ```
-python tools/export_project_to_clip.py
-```
-
-
-To run the "Hello World" demo:
-
-```
-python -m python_os.main
+hatch shell
 ```
 
-This should print "Hello, World!" to the console.
+Once in the Hatch shell:
+
+- To run the app:
+  ```
+  hatch run app
+  ```
+
+- To export the project to clipboard:
+   ```
+   hatch run export
+   ```
 
 ## Development
 
-- Run tests: `pytest`
-- Format code: `black .`
-- Run linter: `pylint python_os tests`
+Hatch provides several commands for development tasks:
+
+- Run tests: 
+  ```
+  hatch run test
+  ```
+
+- Format code and run linter: 
+  ```
+  hatch run lint
+  ```
+
+- Run all checks (linting and tests):
+  ```
+  hatch run check
+  ```
+
+## Additional Notes
+
+- The `pyproject.toml` file contains all the configuration for the project, including dependencies and development tool settings.
+- Hatch manages virtual environments for you, so there's no need to manually create or activate a venv.
 

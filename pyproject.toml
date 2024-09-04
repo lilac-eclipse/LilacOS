@@ -1,50 +1,66 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "python_os"
-version = "0.1.0"
+dynamic = ["version"]
 description = "A simple Python OS project"
+readme = "README.md"
 requires-python = ">=3.8"
+license = "MIT"
+
 dependencies = [
-    "PyQt5",
     "pyperclip==1.8.2",
+    "PyQt5==5.15.11",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest==8.3.2",
-    "pylint==3.2.7",
     "black==24.8.0",
     "build==1.2.1",
+    "hatch==1.12.0",
+    "mypy==1.4.1",
+    "pip-tools==7.1.0",
+    "pylint==3.2.7",
+    "pytest==8.3.2",
 ]
 
-[tool.setuptools]
-packages = ["python_os"]
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python_os"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
 
 [tool.black]
 line-length = 88
 target-version = ['py38']
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-  # directories
-  \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | build
-  | dist
-)/
-'''
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
 
 [tool.pylint.messages_control]
 disable = [
     "C0111",  # missing-docstring
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+
+[tool.hatch.envs.default.scripts]
+app = "python -m python_os.main"
+export = "python tools/export_project_to_clip.py"
+
+lint = [
+    "black .",
+    "pylint src tests",
+]
+test = "pytest"
+check = [
+    "lint",
+    "test",
 ]
