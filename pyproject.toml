@@ -47,6 +47,7 @@ warn_unused_ignores = true
 
 [tool.black]
 target-version = ['py38']
+line-length = 88
 
 [tool.pylint.messages_control]
 disable = [

@@ -3,7 +3,7 @@ from typing import Dict, List, Any, Callable
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QTimer
 
-from lilac_os.core.os_core import OSCore
+from lilac_os.core.terminal_controller import TerminalController
 
 
 class WindowManager:
@@ -14,11 +14,11 @@ class WindowManager:
     def create_window(
         self,
         window_class: Callable[[Any, str], QMainWindow],
-        os_core: OSCore,
+        terminal_controller: TerminalController,
         window_id: str,
     ) -> QMainWindow:
 
-        window = window_class(os_core, window_id)
+        window = window_class(terminal_controller, window_id)
         self.windows[window_id] = window
         window.closed.connect(lambda: self.close_window(window_id))
         window.show()

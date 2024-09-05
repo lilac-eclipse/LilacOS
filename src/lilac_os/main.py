@@ -1,21 +1,43 @@
-from lilac_os.core.os_core import os_instance
+from typing import List, Dict, Any
+from lilac_os.core.hardware import SimulatedHardware
+from lilac_os.core.hardware_abstraction import HardwareAbstractionLayer
+from lilac_os.core.os_core import OSCore
 from lilac_os.gui.terminal import TerminalGUI
 from lilac_os.gui.window_manager import WindowManager
-
-
-def hello_world() -> str:
-    return "Hello, World!"
+from lilac_os.gui.memory_viewer import MemoryViewer
+from lilac_os.core.terminal_controller import TerminalController
 
 
 def main() -> None:
+    # Create virtual hardware
+    hardware: SimulatedHardware = SimulatedHardware()
+
+    # Create hardware abstraction layer
+    hal: HardwareAbstractionLayer = HardwareAbstractionLayer(hardware)
+
+    # Launch OS kernel
+    os_core: OSCore = OSCore(hal)
+
+    # Initialize GUI
     window_manager = WindowManager()
 
-    # Create multiple terminal windows
-    num_terminals = 1  # You can change this number to create more or fewer terminals
-    for i in range(num_terminals):
-        window_manager.create_window(
-            TerminalGUI, os_core=os_instance, window_id=f"{i+1}"
-        )
+    # Create memory viewer
+    memory_viewer = MemoryViewer(hardware)
+    memory_viewer.show()
+
+    # Set memory viewer in OS core
+    os_core.set_memory_viewer(memory_viewer)
+
+    # Create terminal controller
+    terminal_controller = TerminalController(os_core)
+
+    # Create terminal
+    terminal = window_manager.create_window(
+        TerminalGUI, terminal_controller=terminal_controller, window_id="1"
+    )
+
+    # Update memory viewer initially
+    memory_viewer.update()
 
     # Run all windows
     window_manager.run_all_windows()
