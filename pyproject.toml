@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "python_os"
+name = "lilac_os"
 dynamic = ["version"]
 description = "A simple Python OS project"
 readme = "README.md"
@@ -31,7 +31,7 @@ features = [
 source = "vcs"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/python_os"]
+packages = ["src/lilac_os"]
 
 [tool.mypy]
 python_version = "3.8"
@@ -60,7 +60,7 @@ testpaths = ["tests"]
 [tool.hatch.envs.default.scripts]
 
 # Application commands
-app = "python -m python_os.main"
+app = "python -m lilac_os.main"
 export = "python tools/export_project_to_clip.py"
 
 # Individual task commands
