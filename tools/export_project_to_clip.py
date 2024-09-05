@@ -39,9 +39,9 @@ def get_file_contents(startpath):
                 file_path = os.path.join(root, file)
                 output.append(f"\n\n--- Contents of {file_path} ---\n")
                 try:
-                    with open(file_path, "r") as f:
+                    with open(file_path, "r", encoding="utf-8") as f:
                         output.append(f.read())
-                except Exception as e:
+                except Exception as e:  # pylint: disable=broad-exception-caught
                     output.append(f"Error reading file: {str(e)}")
     return "\n".join(output)
 
