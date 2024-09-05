@@ -33,6 +33,10 @@ Once in the Hatch shell:
   ```
   hatch run app
   ```
+- To run the sandbox:
+  ```
+  hatch run sandbox
+  ```
 
 ## Development
 

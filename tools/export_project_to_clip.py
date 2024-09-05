@@ -11,6 +11,7 @@ EXCLUDE_DIRS = {
     "lilac_os.egg-info",
     "__pycache__",
     ".mypy_cache",
+    "sandbox",
 }
 
 
