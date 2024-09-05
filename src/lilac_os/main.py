@@ -1,6 +1,6 @@
-from python_os.core.os_core import os_instance
-from python_os.gui.terminal import TerminalGUI
-from python_os.gui.window_manager import WindowManager
+from lilac_os.core.os_core import os_instance
+from lilac_os.gui.terminal import TerminalGUI
+from lilac_os.gui.window_manager import WindowManager
 
 
 def hello_world():

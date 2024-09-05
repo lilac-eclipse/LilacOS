@@ -1,4 +1,4 @@
-# Python OS Tools/Demo Package
+# Lilac OS Tools/Demo Package
 
 This package contains various tools and demos related to OS operations in Python.
 

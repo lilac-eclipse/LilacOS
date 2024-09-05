@@ -8,7 +8,7 @@ EXCLUDE_DIRS = {
     ".git",
     "tools",
     ".pytest_cache",
-    "python_os.egg-info",
+    "lilac_os.egg-info",
     "__pycache__",
     ".mypy_cache",
 }
