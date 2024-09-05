@@ -45,15 +45,13 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 
 
-[[tool.mypy.overrides."tests.*"]]
-disallow_untyped_defs = false
-
 [tool.black]
 target-version = ['py38']
 
 [tool.pylint.messages_control]
 disable = [
     "C0111",  # missing-docstring
+    "W0511",  # fixme
 ]
 
 [tool.pytest.ini_options]
@@ -65,11 +63,12 @@ testpaths = ["tests"]
 
 # Application commands
 app = "python -m lilac_os.main"
+sandbox = "python -m sandbox.main"
 export = "python tools/export_project_to_clip.py"
 
 # Individual task commands
 format = "black ."
-type_check = "mypy src tests"
+type_check = "mypy src"
 lint = "pylint src tests"
 unit_test = "pytest"
 

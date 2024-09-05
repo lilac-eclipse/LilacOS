@@ -1,6 +1,7 @@
 from typing import List, Dict
 
 
+# pylint: disable=too-few-public-methods
 class Process:
     # Placeholder for a more detailed Process class
     pass
