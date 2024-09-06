@@ -11,13 +11,38 @@ class Turtle:
         self.weight = weight
 
 
+# 0. New Function to make my brain explode
+def add_five(number: float) -> float:
+
+    add_v = number + 5
+    return add_v
+
+
+# 00. New Function, sadddddd face
+# New function who's job is to determine if someone is of age to buy alcohol
+# the input should be the person's age
+# the output should be true, if of age, false otherwise
+# should return a type bool (like float, string etc.) (bool apparently means something)
+def old_enough_for_booze(age_in_years: int) -> bool:
+    if age_in_years > 90:
+        return True
+    if age_in_years > 60:
+        return False
+    if age_in_years > 18:
+        return True
+
+    return False
+
+
 # 1. Variables and basic operations
-def calculate_age_in_months(age_in_years: float) -> int:
+def calculate_age_in_months(age_in_years: float) -> float:
     """
     Convert age in years to months.
     """
+
+    age_in_months = age_in_years * 12
     # TODO: Calculate and return the age in months
-    return 0
+    return age_in_months
 
 
 # 2. Strings and string methods

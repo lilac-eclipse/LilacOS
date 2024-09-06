@@ -1,11 +1,30 @@
 from sandbox.turtle_homework.turtle_themed_learning import (
     Turtle,
+    old_enough_for_booze,
+    add_five,
     calculate_age_in_months,
     get_turtle_name_length,
     add_turtle_to_pond,
     get_adult_turtles,
     TurtlePond,
 )
+
+# def test_calculate_age_in_months() -> None:
+#     assert calculate_age_in_months(2) == 24
+#     assert calculate_age_in_months(0.5) == 6
+
+
+# TODO: saddddddd face
+def test_old_enough_for_booze():
+    assert old_enough_for_booze(19) == True
+    assert old_enough_for_booze(16) == False
+    assert old_enough_for_booze(62) == False
+    assert old_enough_for_booze(93) == True
+
+
+# TODO: Brain expolodes
+def test_add_five():
+    assert add_five(3) == 8
 
 
 # TODO: Implement this test
