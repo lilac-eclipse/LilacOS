@@ -25,6 +25,7 @@ def test_old_enough_for_booze():
 # TODO: Brain expolodes
 def test_add_five():
     assert add_five(3) == 8
+    assert add_five(5) == 10
 
 
 # TODO: Implement this test

@@ -46,6 +46,15 @@ def calculate_age_in_months(age_in_years: float) -> float:
 
 
 # 2. Strings and string methods
+# notes: and pretend hints that are 90% of the answer... we shall see. len is important
+# def main() -> None:
+# print("do whatever your heart desires!")
+# # print_tutorial()
+# a = "dog"
+# print(a)
+# print(len(a))
+
+
 def get_turtle_name_length(name: str) -> int:
     """
     Return the length of the turtle's name.
