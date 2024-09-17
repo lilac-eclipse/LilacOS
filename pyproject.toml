@@ -64,7 +64,7 @@ testpaths = ["tests"]
 
 # Application commands
 app = "python -m lilac_os.main"
-sandbox = "python -m sandbox.main"
+sandbox = "python -m sandbox.sandbox"
 export = "python tools/export_project_to_clip.py"
 
 # Individual task commands
