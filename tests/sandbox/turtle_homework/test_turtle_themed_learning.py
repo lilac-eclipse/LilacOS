@@ -1,5 +1,6 @@
 from typing import List
 import pytest
+import tomli
 from sandbox.turtle_homework.turtle_themed_learning import (
     Turtle,
     add_five,
@@ -32,14 +33,16 @@ def test_add_five():
 def test_peri_calculate_age_in_months():
     # Write at least two assertions testing the calculate_age_in_months function
     # HINT: Test with both integer and float inputs
-    pass
+    assert calculate_age_in_months(1.5) == 18
+    # passed
 
 
 # TODO: Implement this test
 def test_peri_get_turtle_name_length():
     # Write at least two assertions testing the get_turtle_name_length function
     # HINT: Test with names of different lengths
-    pass
+    assert get_turtle_name_length("Tomley") == 6
+    # passed
 
 
 # TODO: Implement this test

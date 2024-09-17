@@ -59,8 +59,10 @@ def get_turtle_name_length(name: str) -> int:
     """
     Return the length of the turtle's name.
     """
+
+    turtles_name_length = len(name)
     # TODO: Return the length of the name
-    return 0
+    return turtles_name_length
 
 
 # 3. Lists and list operations
