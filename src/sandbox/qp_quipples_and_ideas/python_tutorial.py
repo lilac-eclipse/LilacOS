@@ -1,14 +1,7 @@
 from typing import List, Optional
 
 
-def print_section_header(section_number: int, section_name: str) -> None:
-    print("=============")
-    print(f"==Section {section_number}, {section_name} ==")
-    print("=============")
-
-
 def section_1_variables() -> None:
-    print_section_header(1, "variables")
     a = "hi"
     b = 2
     c = 3
@@ -20,7 +13,6 @@ def section_1_variables() -> None:
 
 
 def section_2_lists() -> None:
-    print_section_header(2, "lists")
     llama = [3]
     e = 4
     llama.append(2)
@@ -35,7 +27,6 @@ def section_2_lists() -> None:
 
 
 def section_3_maps() -> None:
-    print_section_header(3, "maps")
     brand = {}
     brand[3] = "ie"
     print(brand)
@@ -45,7 +36,6 @@ def section_3_maps() -> None:
 
 
 def section_3_1_maps_2() -> None:
-    print_section_header(3, "maps 2")
     phones = {"brandie": "505-123-4532", "jenn": "505-987-1452"}
     print(phones)
     print(phones["brandie"])
@@ -56,7 +46,6 @@ def section_3_1_maps_2() -> None:
 
 
 def section_4_conditionals() -> None:
-    print_section_header(4, "conditionals")
     a = 3
     b = 2
     if a > b:
@@ -71,7 +60,6 @@ def section_4_conditionals() -> None:
 
 
 def section_5_loops() -> None:
-    print_section_header(5, "loops")
     names = ["brandie", "jenn", "julie"]
     for n in names:
         print(n)
@@ -83,7 +71,6 @@ def section_5_loops() -> None:
 
 
 def section_6_classes() -> None:
-    print_section_header(6, "classes")
 
     class Dog:  # pylint: disable=too-few-public-methods
         def __init__(self, name: str) -> None:
@@ -99,7 +86,6 @@ def section_6_classes() -> None:
 
 
 def section_7_challenge() -> None:
-    print_section_header(7, "challenge")
 
     class Human:
         def __init__(self, name: str) -> None:
@@ -139,14 +125,3 @@ def section_7_challenge() -> None:
     brandie.set_best_friend(julie)
     for p, _ in ppl.items():
         p.greet_friends()
-
-
-def print_tutorial() -> None:
-    section_1_variables()
-    section_2_lists()
-    section_3_maps()
-    section_3_1_maps_2()
-    section_4_conditionals()
-    section_5_loops()
-    section_6_classes()
-    section_7_challenge()
