@@ -123,7 +123,7 @@ def test_calculate_turtle_speed() -> None:
     assert calculate_turtle_speed(turtle2) == 4.5
 
 
-@pytest.fixture
+@pytest.fixture(name="pond")
 def sample_pond() -> TurtlePond:
     pond = TurtlePond()
     pond.add_turtle(Turtle("Speedy", 6, "green", 15))

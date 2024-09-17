@@ -73,6 +73,8 @@ type_check = "mypy src"
 lint = "pylint src tests"
 unit_test = "pytest"
 
+clean = "python -c \"import shutil, pathlib; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('__pycache__')]\""
+
 # Main workflow commands
 dev = ["format", "app"]
 dev_strict = ["format", "type_check", "app"]
