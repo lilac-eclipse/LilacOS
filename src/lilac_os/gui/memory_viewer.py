@@ -1,7 +1,6 @@
 # pylint: disable=no-name-in-module
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QTextEdit, QTabWidget
 from PyQt5.QtGui import QFont
-from PyQt5.QtCore import Qt
 from lilac_os.core.hardware import SimulatedHardware, MEMORY_SIZE, DISK_SIZE
 
 
@@ -59,6 +58,6 @@ class MemoryViewer(QWidget):
             content += f"{line}{hex_values}  {ascii_values}\n"
         self.disk_view.setText(content)
 
-    def update(self) -> None:
+    def refresh_views(self) -> None:
         self.update_memory_view()
         self.update_disk_view()

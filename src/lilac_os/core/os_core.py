@@ -3,7 +3,7 @@ from typing import Dict, Optional
 from lilac_os.gui.memory_viewer import MemoryViewer
 from .hardware_abstraction import HardwareAbstractionLayer
 from .process import Process, ProgramManager
-from .memory import MemoryManager, TOTAL_PAGES, PAGE_SIZE
+from .memory import MemoryManager
 
 
 class OSCore:

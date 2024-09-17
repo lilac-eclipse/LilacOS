@@ -17,19 +17,19 @@ modules_to_run: List[ModuleType] = [
 ]
 
 
-def print_header(text: str, char: str = "=", width: int = 80):
+def print_header(text: str, char: str = "=", width: int = 80) -> None:
     print(f"\n{char * width}")
     print(f"{text:^{width}}")
     print(f"{char * width}")
 
 
-def print_subheader(text: str, width: int = 80):
+def print_subheader(text: str, width: int = 80) -> None:
     print(f"\n╔{'═' * (width - 2)}╗")
     print(f"║ {text:<{width - 4}} ║")
     print(f"╚{'═' * (width - 2)}╝")
 
 
-def discover_and_execute_quipples():
+def discover_and_execute_quipples() -> None:
 
     for module in modules_to_run:
         module_name = module.__name__.rsplit(".", maxsplit=1)[-1]
@@ -45,7 +45,7 @@ def discover_and_execute_quipples():
         print("\n" + "-" * 80)  # Separator between modules
 
 
-def main():
+def main() -> None:
     discover_and_execute_quipples()
 
 

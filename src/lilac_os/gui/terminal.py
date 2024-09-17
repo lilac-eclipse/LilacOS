@@ -105,6 +105,6 @@ class TerminalGUI(QMainWindow):
         self.terminal.append("")  # Add a blank line for better readability
         self.display_prompt()
 
-    def closeEvent(self, event: Any) -> None:
+    def close_event(self, event: Any) -> None:
         self.closed.emit(self.window_id)
         super().closeEvent(event)

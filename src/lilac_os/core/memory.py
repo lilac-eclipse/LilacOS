@@ -65,7 +65,7 @@ class MemoryManager:
             page_table_entry = process.page_table.get_entry(virtual_page)
             page_table_entry.dirty = True
         if self.os_core.memory_viewer:
-            self.os_core.memory_viewer.update()
+            self.os_core.memory_viewer.refresh_views()
 
     def translate_address(self, pid: int, virtual_address: int) -> int:
         if not self.virtual_memory_enabled:
@@ -77,7 +77,7 @@ class MemoryManager:
 
         page_table_entry = process.page_table.get_entry(virtual_page)
         if not page_table_entry.present:
-            physical_page = self.handle_page_fault(pid, virtual_address)
+            physical_page: Optional[int] = self.handle_page_fault(pid, virtual_address)
         else:
             physical_page = page_table_entry.physical_page
 

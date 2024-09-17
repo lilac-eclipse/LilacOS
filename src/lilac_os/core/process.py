@@ -75,6 +75,7 @@ class ProgramManager:
             raise ValueError(f"Program '{name}' does not exist")
 
     def execute_command(self, command: str) -> str:
+        # pylint: disable=R0911 (too-many-return-statements)
         parts = command.split()
         if not parts:
             return ""
@@ -93,18 +94,22 @@ class ProgramManager:
         if parts[0] == "allocate":
             if len(parts) != 3:
                 return "Usage: allocate <variable_name> <size>"
-            var_name, size = parts[1], int(parts[2])
+            var_name, size_str = parts[1], parts[2]
+            try:
+                size = int(size_str)
+            except ValueError:
+                return f"Invalid size: {size_str}. Please provide an integer."
             self.current_program.allocate_variable(var_name, size)
             return f"Variable '{var_name}' allocated with size {size}"
 
         if parts[0] == "set":
             if len(parts) < 3:
                 return "Usage: set <variable_name> <value>"
-            var_name, value = parts[1], " ".join(parts[2:])
+            var_name, value_str = parts[1], " ".join(parts[2:])
             try:
-                value = int(value)
+                value: Union[int, str] = int(value_str)
             except ValueError:
-                pass
+                value = value_str
             self.current_program.set_variable(var_name, value)
             return f"Variable '{var_name}' set to {value}"
 

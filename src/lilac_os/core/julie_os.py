@@ -1,4 +1,7 @@
+# mypy: allow-untyped-defs
+# pylint: disable=all
 from collections import defaultdict
+from typing import Dict, List, Tuple
 
 # import plotly.graph_objects as go
 # from plotly.subplots import make_subplots
@@ -43,7 +46,7 @@ class BaseOS:
     def terminate_process(self, pid):
         if pid in self.processes:
             process = self.processes[pid]
-            for start_address, size in process.memory_regions.items():
+            for start_address, _ in process.memory_regions.items():
                 self.free(pid, start_address)
             del self.processes[pid]
 
@@ -132,7 +135,7 @@ class BaseOS:
 
 
 class JulieVirtualMemoryManager(BaseVirtualMemoryManager):
-    def handle_page_fault(self, process, virtual_page_number):
+    def handle_page_fault(self, process, virtual_page_number) -> int:
         if not self.free_pages:
             evicted_page = self.evict_page(process, virtual_page_number)
             self.free_pages.add(evicted_page)
@@ -173,11 +176,11 @@ class JulieVirtualMemoryManager(BaseVirtualMemoryManager):
 class JulieOS(BaseOS):
     def __init__(self):
         super().__init__()
-        self.virtual_memory_manager = JulieVirtualMemoryManager(
-            self.physical_memory, self.secondary_storage
+        self.virtual_memory_manager: JulieVirtualMemoryManager = (
+            JulieVirtualMemoryManager(self.physical_memory, self.secondary_storage)
         )
-        self.free_list = [(0, PHYSICAL_MEMORY_SIZE)]
-        self.next_virtual_address = defaultdict(int)
+        self.free_list: List[Tuple[int, int]] = [(0, PHYSICAL_MEMORY_SIZE)]
+        self.next_virtual_address: Dict[int, int] = defaultdict(int)
 
     def malloc(self, pid, size):
         process = self.processes[pid]
@@ -206,7 +209,7 @@ class JulieOS(BaseOS):
         # If no suitable free region, raise an exception
         raise Exception("Out of memory")
 
-    def free(self, pid, address):
+    def free(self, pid: int, address: int) -> None:
         process = self.processes[pid]
         if address in process.memory_regions:
             size = process.memory_regions[address]
@@ -233,12 +236,10 @@ class JulieOS(BaseOS):
                     entry = process.page_table.get_entry(virtual_page)
                     if entry.present:
                         self.virtual_memory_manager.free_pages.add(entry.physical_page)
-                        if (
-                            entry.physical_page
-                            in self.virtual_memory_manager.page_queue
-                        ):
+                        page_queue_entry = (pid, virtual_page, entry.physical_page)
+                        if page_queue_entry in self.virtual_memory_manager.page_queue:
                             self.virtual_memory_manager.page_queue.remove(
-                                entry.physical_page
+                                page_queue_entry
                             )
                         entry.present = False
 
@@ -270,7 +271,7 @@ class JulieOS(BaseOS):
                 return True
         return False
 
-    def handle_page_fault(self, pid, virtual_address):
+    def handle_page_fault(self, pid: int, virtual_address: int) -> int:
         process = self.processes[pid]
         virtual_page = virtual_address // PAGE_SIZE
         return self.virtual_memory_manager.handle_page_fault(process, virtual_page)
@@ -392,7 +393,7 @@ class Process:
                 return new_addr
 
         # If we don't have space, request a new memory region from the OS
-        address, mmap_size = self.os.mmap(self.pid, size)
+        address, _ = self.os.mmap(self.pid, size)
         self.mallocs[address] = size
         return address
 

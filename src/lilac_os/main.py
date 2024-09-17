@@ -1,4 +1,3 @@
-from typing import List, Dict, Any
 from lilac_os.core.hardware import SimulatedHardware
 from lilac_os.core.hardware_abstraction import HardwareAbstractionLayer
 from lilac_os.core.os_core import OSCore
@@ -32,12 +31,12 @@ def main() -> None:
     terminal_controller = TerminalController(os_core)
 
     # Create terminal
-    terminal = window_manager.create_window(
+    window_manager.create_window(
         TerminalGUI, terminal_controller=terminal_controller, window_id="1"
     )
 
     # Update memory viewer initially
-    memory_viewer.update()
+    memory_viewer.refresh_views()
 
     # Run all windows
     window_manager.run_all_windows()

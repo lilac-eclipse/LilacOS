@@ -13,21 +13,23 @@ class TerminalController:
             if self.interpreter_mode:
                 self.interpreter_mode = False
                 return "Exiting interpreter mode"
-            else:
-                return "EXIT"
-        elif command.lower() == "interpreter":
+
+            return "EXIT"
+
+        if command.lower() == "interpreter":
             self.interpreter_mode = True
             return "Entering interpreter mode. Type 'exit' to leave."
-        else:
-            return self.os_core.execute_command(command)
+
+        return self.os_core.execute_command(command)
 
     def get_prompt(self) -> str:
         if self.interpreter_mode:
             return ">>> "
-        elif self.current_program:
+
+        if self.current_program:
             return f"{self.current_program}> "
-        else:
-            return "$ "
+
+        return "$ "
 
     def is_interpreter_mode(self) -> bool:
         return self.interpreter_mode

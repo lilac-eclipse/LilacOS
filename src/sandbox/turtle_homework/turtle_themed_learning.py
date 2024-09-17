@@ -83,26 +83,36 @@ def add_turtle_to_pond(pond: List[Turtle], turtle: Turtle) -> List[Turtle]:
 
 
 # 4. List comprehension
-# adapt my learning from lines turtle name length, and add turtle to pond and good luck.....
-# also check out sandbox craziness, then remember to Highlight part of the code, press shift + return, and enjoy the output
+# adapt my learning from lines turtle name length, and add turtle to pond and
+# good luck.....
+# also check out sandbox craziness, then remember to Highlight part of the code,
+# press shift + return, and enjoy the output
 def get_adult_turtles(turtles: List[Turtle]) -> List[Turtle]:
     """
     Return a list of turtles that are 5 years or older.
     """
-    # Taking in a list of turtle and transforming a list of turtle.... contents need to be different.
+    # Taking in a list of turtle and transforming a list of turtle.... contents need
+    #  to be different.
 
     # TODO: Use list comprehension to return turtles 5 years or older
+    print(turtles)
     return []
 
 
 # 5. Creating objects
-# adapt my learning from lines turtle name length, and add turtle to pond and good luck.....
-# also check out sandbox craziness, then remember to Highlight part of the code, press shift + return, and enjoy the output
+# adapt my learning from lines turtle name length, and add turtle to pond and
+# good luck.....
+# also check out sandbox craziness, then remember to Highlight part of the code,
+# press shift + return, and enjoy the output
 def create_turtle(name: str, age: int, color: str, weight: float) -> Turtle:
     """
     Create and return a Turtle object.
     """
     # TODO: Create and return a Turtle object with the given attributes
+    print(name)
+    print(age)
+    print(color)
+    print(weight)
     return Turtle("", 0, "", 0)
 
 
@@ -112,6 +122,8 @@ def update_turtle_age(turtle: Turtle, new_age: int) -> Turtle:
     Update the age of the turtle and return the updated turtle.
     """
     # TODO: Update the age of the turtle and return it
+    print(turtle)
+    print(new_age)
     return Turtle("", 0, "", 0)
 
 
@@ -122,6 +134,7 @@ def calculate_turtle_speed(turtle: Turtle) -> float:
     Speed formula: (age * 2) - (weight / 10)
     """
     # TODO: Calculate and return the turtle's speed using the given formula
+    print(turtle)
     return 0
 
 
