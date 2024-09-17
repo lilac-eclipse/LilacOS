@@ -14,8 +14,12 @@ class Turtle:
 # 0. New Function to make my brain explode
 def add_five(number: float) -> float:
 
-    add_v = number + 5
-    return add_v
+    # add_v = number + 5
+    number = number + 5
+    return number
+
+
+# What else
 
 
 # 00. New Function, sadddddd face
@@ -70,20 +74,30 @@ def add_turtle_to_pond(pond: List[Turtle], turtle: Turtle) -> List[Turtle]:
     """
     Add a turtle to the pond list and return the updated list.
     """
+    pond.append(turtle)
+    # turtlist = pond
+    # turt_name = turtle
+    # turtlist.append(turtle)
     # TODO: Add the turtle to the pond list and return the updated list
-    return []
+    return pond
 
 
 # 4. List comprehension
+# adapt my learning from lines turtle name length, and add turtle to pond and good luck.....
+# also check out sandbox craziness, then remember to Highlight part of the code, press shift + return, and enjoy the output
 def get_adult_turtles(turtles: List[Turtle]) -> List[Turtle]:
     """
     Return a list of turtles that are 5 years or older.
     """
+    # Taking in a list of turtle and transforming a list of turtle.... contents need to be different.
+
     # TODO: Use list comprehension to return turtles 5 years or older
     return []
 
 
 # 5. Creating objects
+# adapt my learning from lines turtle name length, and add turtle to pond and good luck.....
+# also check out sandbox craziness, then remember to Highlight part of the code, press shift + return, and enjoy the output
 def create_turtle(name: str, age: int, color: str, weight: float) -> Turtle:
     """
     Create and return a Turtle object.

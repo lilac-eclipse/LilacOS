@@ -25,7 +25,10 @@ def test_old_enough_for_booze():
 
 # TODO: Brain expolodes
 def test_add_five():
-    assert add_five(3) == 8
+    num = 3
+    assert add_five(num) == 8
+    # assert num == 8
+    # assert add_five(3) == 8
     assert add_five(5) == 10
 
 
@@ -49,7 +52,18 @@ def test_peri_get_turtle_name_length():
 def test_peri_add_turtle_to_pond():
     # Create a list of Turtle objects and test adding a new Turtle
     # HINT: Check both the length of the list and the presence of the new Turtle
-    pass
+    turtlepoop = Turtle("Poop", 5, "green", 3)
+    turtlepop = Turtle("Pop", 20, "lavender", 35)
+    turtleboop = Turtle("Boop", 55, "pink", 10)
+    turtlesnot = Turtle("Snot", 14, "blue", 20)
+    turtlist = [turtlepoop, turtlepop, turtlesnot]
+    # turtlist.append(turtleboop)
+    updated_list = add_turtle_to_pond(turtlist, turtleboop)
+
+    assert turtleboop in turtlist
+    assert turtleboop in updated_list
+
+    # pass/fail
 
 
 # TODO: Implement this test
