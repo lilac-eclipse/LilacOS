@@ -1,13 +1,13 @@
-# from typing import List
+from typing import List
 
-# import pytest
+import pytest
 from sandbox.turtle_homework.turtle_themed_learning import (
     Turtle,
     add_five,
     calculate_age_in_months,
     get_turtle_name_length,
     add_turtle_to_pond,
-    # get_adult_turtles,
+    get_adult_turtles,
     # create_turtle,
     old_enough_for_booze,
     # update_turtle_age,
@@ -52,14 +52,19 @@ def test_peri_get_turtle_name_length():
 def test_peri_add_turtle_to_pond():
     # Create a list of Turtle objects and test adding a new Turtle
     # HINT: Check both the length of the list and the presence of the new Turtle
-    turtlepoop = Turtle("Poop", 5, "green", 3)
+
+    # 1. SETUP
+    turtlepoop = Turtle("Poop", 4, "green", 3)
     turtlepop = Turtle("Pop", 20, "lavender", 35)
     turtleboop = Turtle("Boop", 55, "pink", 10)
     turtlesnot = Turtle("Snot", 14, "blue", 20)
     turtlist = [turtlepoop, turtlepop, turtlesnot]
+
+    # 2. Execute function (target code)
     # turtlist.append(turtleboop)
     updated_list = add_turtle_to_pond(turtlist, turtleboop)
 
+    # 3. Check Results
     assert turtleboop in turtlist
     assert turtleboop in updated_list
 
@@ -70,6 +75,24 @@ def test_peri_add_turtle_to_pond():
 def test_peri_get_adult_turtles():
     # Create a list of Turtle objects with various ages and test get_adult_turtles
     # HINT: Ensure your list has both adult and non-adult turtles
+
+    # HINT 2: I have to pass a list of turtles through get_adult_turtles, and it will
+    # return that list without the underage turtles
+    # Creating some stuff, passing into a function, and checking the result
+
+    # 1. SETUP (create some stuff)
+    turtlepoop = Turtle("Poop", 4, "green", 3)
+    turtlepop = Turtle("Pop", 20, "lavender", 35)
+    turtleboop = Turtle("Boop", 55, "pink", 10)
+    turtlesnot = Turtle("Snot", 14, "blue", 20)
+    turtlist_age = [turtlepop, turtleboop, turtlesnot, turtlepoop]
+
+    # 2. Execute function (target code) (passing into a function)
+    updated_list_adult = get_adult_turtles(turtlist_age)
+    # print(updated_list_adult)
+    # 3. Check Results (checking the result)
+    assert turtlepoop not in updated_list_adult
+    assert turtlepop in updated_list_adult
     pass
 
 
@@ -87,36 +110,36 @@ def test_peri_turtle_pond_operations():
 # b-low is lilac
 
 
-# def test_calculate_age_in_months() -> None:
-#     assert calculate_age_in_months(2) == 24
-#     assert calculate_age_in_months(0.5) == 6
+def test_calculate_age_in_months() -> None:
+    assert calculate_age_in_months(2) == 24
+    assert calculate_age_in_months(0.5) == 6
 
 
-# def test_get_turtle_name_length() -> None:
-#     assert get_turtle_name_length("Speedy") == 6
-#     assert get_turtle_name_length("Mr. Shell") == 9
+def test_get_turtle_name_length() -> None:
+    assert get_turtle_name_length("Speedy") == 6
+    assert get_turtle_name_length("Mr. Shell") == 9
 
 
-# def test_add_turtle_to_pond() -> None:
-#     pond: List[Turtle] = [
-#         Turtle("Speedy", 6, "green", 15),
-#         Turtle("Slowpoke", 4, "brown", 20),
-#     ]
-#     new_turtle = Turtle("Shelly", 5, "green", 18)
-#     updated_pond = add_turtle_to_pond(pond, new_turtle)
-#     assert len(updated_pond) == 3
-#     assert updated_pond[-1].name == "Shelly"
+def test_add_turtle_to_pond() -> None:
+    pond: List[Turtle] = [
+        Turtle("Speedy", 6, "green", 15),
+        Turtle("Slowpoke", 4, "brown", 20),
+    ]
+    new_turtle = Turtle("Shelly", 5, "green", 18)
+    updated_pond = add_turtle_to_pond(pond, new_turtle)
+    assert len(updated_pond) == 3
+    assert updated_pond[-1].name == "Shelly"
 
 
-# def test_get_adult_turtles() -> None:
-#     turtles: List[Turtle] = [
-#         Turtle("Speedy", 6, "green", 15),
-#         Turtle("Slow", 4, "brown", 20),
-#         Turtle("Old", 10, "gray", 25),
-#     ]
-#     adult_turtles = get_adult_turtles(turtles)
-#     assert len(adult_turtles) == 2
-#     assert all(turtle.age >= 5 for turtle in adult_turtles)
+def test_get_adult_turtles() -> None:
+    turtles: List[Turtle] = [
+        Turtle("Speedy", 6, "green", 15),
+        Turtle("Slow", 4, "brown", 20),
+        Turtle("Old", 10, "gray", 25),
+    ]
+    adult_turtles = get_adult_turtles(turtles)
+    assert len(adult_turtles) == 2
+    assert all(turtle.age >= 5 for turtle in adult_turtles)
 
 
 # def test_create_turtle() -> None:

@@ -10,6 +10,12 @@ class Turtle:
         self.color = color
         self.weight = weight
 
+    def __str__(self) -> str:
+        return f"Turtle(name='{self.name}', age={self.age}, color='{self.color}', weight={self.weight})"
+
+    def __repr__(self) -> str:
+        return self.__str__()
+
 
 # 0. New Function to make my brain explode
 def add_five(number: float) -> float:
@@ -95,8 +101,12 @@ def get_adult_turtles(turtles: List[Turtle]) -> List[Turtle]:
     #  to be different.
 
     # TODO: Use list comprehension to return turtles 5 years or older
+    for x in turtles:
+        print(x)
+        print(x.age)
+    adult_turtles = turtles
     print(turtles)
-    return []
+    return adult_turtles
 
 
 # 5. Creating objects
